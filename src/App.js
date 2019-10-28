@@ -3,24 +3,26 @@ import React, { Component} from 'react';
 import TodoForm from './components/TodoComponents/TodoForm'
 import TodoList from './components/TodoComponents/TodoList';
 
-const data = [
-  {
-    name: 'Mow the Yard',
-    id: 1,
-    completed: false
-  },
-  {
-    name: 'Wash Dishes',
-    id: 2,
-    completed: false
-  }
-]
+
+
+// const data = [
+//   {
+//     name: 'Mow the Yard',
+//     id: 1,
+//     completed: false
+//   },
+//   {
+//     name: 'Wash Dishes',
+//     id: 2,
+//     completed: false
+//   }
+// ]
 
 class App extends Component {
   constructor(){
     super();
     this.state ={
-      task: data
+      task: []
     }
   }
  
@@ -39,11 +41,8 @@ class App extends Component {
   };
 
   toggleCompleted = id => {
-    // loop through groceries data
-    // find the grocery we clicked
-    // toggle that grocery's purchased property
     this.setState({
-      task: this.state.newItem.map(item => {
+      task:this.state.task.map(item => {
         if (item.id === id) {
           return {
             ...item,
@@ -54,8 +53,14 @@ class App extends Component {
         }
       })
     });
-
   };
+
+  filterItems = () => {
+    this.setState({
+      task: this.state.task.filter(item => item.completed !== true )
+    
+  })
+}
 
   render() {
     console.log('rendering...')
@@ -63,8 +68,9 @@ class App extends Component {
       <div>
         <h2>Welcome to your Todo App!</h2>
         <TodoList 
+          toggleCompleted={this.toggleCompleted}
           task={this.state.task}
-          toggleCompleted={this.togglePurchased}
+          filterItems={this.filterItems}
         />
        <TodoForm addItem={this.addItem}/>
         
