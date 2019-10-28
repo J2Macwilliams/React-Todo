@@ -70,9 +70,12 @@ class App extends Component {
         <TodoList 
           toggleCompleted={this.toggleCompleted}
           task={this.state.task}
-          filterItems={this.filterItems}
+         
         />
-       <TodoForm addItem={this.addItem}/>
+       <TodoForm 
+       addItem={this.addItem}
+       filterItems={this.filterItems}
+       />
         
       </div>
     );

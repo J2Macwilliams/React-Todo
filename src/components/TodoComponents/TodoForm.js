@@ -32,7 +32,10 @@ class TodoForm extends Component {
                 onChange={this.handleChanges}
                 />
                 <button>Add Todo</button>
-                
+                <button onClick={e => 
+                {e.preventDefault();
+                this.props.filterItems()
+                }}>Clear Completed</button>
             </form>
         );
     }
