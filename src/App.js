@@ -2,6 +2,7 @@ import React, { Component} from 'react';
 
 import TodoForm from './components/TodoComponents/TodoForm'
 import TodoList from './components/TodoComponents/TodoList';
+import Path from './components/Path';
 
 
 
@@ -76,7 +77,7 @@ class App extends Component {
        addItem={this.addItem}
        filterItems={this.filterItems}
        />
-        
+        <Path />
       </div>
     );
   }
